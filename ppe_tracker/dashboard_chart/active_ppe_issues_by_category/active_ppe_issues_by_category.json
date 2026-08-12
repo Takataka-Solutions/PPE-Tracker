@@ -1,0 +1,13 @@
+{
+    "name": "Active PPE Issues by Category",
+    "doctype": "Dashboard Chart",
+    "chart_type": "Group By",
+    "document_type": "PPE Issue",
+    "group_by_type": "Count",
+    "group_by_based_on": "ppe_item",
+    "chart_name": "Active PPE Issues by Category",
+    "type": "Donut",
+    "filters_json": "{\"status\": \"Active\"}",
+    "is_standard": 1,
+    "module": "PPE Tracker"
+}

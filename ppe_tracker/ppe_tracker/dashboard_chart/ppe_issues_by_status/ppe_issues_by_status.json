@@ -1,0 +1,13 @@
+{
+    "name": "PPE Issues by Status",
+    "doctype": "Dashboard Chart",
+    "chart_type": "Group By",
+    "document_type": "PPE Issue",
+    "group_by_type": "Count",
+    "group_by_based_on": "status",
+    "chart_name": "PPE Issues by Status",
+    "type": "Bar",
+    "filters_json": "{}",
+    "is_standard": 1,
+    "module": "PPE Tracker"
+}

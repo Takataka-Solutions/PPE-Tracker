@@ -1,0 +1,12 @@
+{
+    "name": "Overdue Casual PPE Returns",
+    "doctype": "Dashboard Chart",
+    "chart_name": "Overdue Casual PPE Returns",
+    "chart_type": "Count",
+    "document_type": "PPE Issue",
+    "filters_json": "{\"issue_type\": \"Casual\", \"is_overdue\": 1, \"status\": \"Active\"}",
+    "type": "Bar",
+    "is_standard": 1,
+    "is_public": 1,
+    "module": "PPE Tracker"
+}

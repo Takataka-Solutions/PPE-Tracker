@@ -1,0 +1,21 @@
+[
+    {
+        "doctype": "Role",
+        "name": "Safety Officer",
+        "role_name": "Safety Officer",
+        "is_custom": 1
+    },
+    {
+        "doctype": "Role",
+        "name": "Storekeeper",
+        "role_name": "Storekeeper",
+        "is_custom": 1
+    },
+    {
+        "doctype": "Role",
+        "name": "MRF User",
+        "role_name": "MRF User",
+        "is_custom": 1,
+        "desk_access": 1
+    }
+]

@@ -1,0 +1,19 @@
+{
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "Page",
+ "icon": "",
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "bulk-ppe-issue",
+ "owner": "Administrator",
+ "page_name": "bulk-ppe-issue",
+ "roles": [
+  {"role": "HR Manager"},
+  {"role": "Safety Officer"},
+  {"role": "Storekeeper"}
+ ],
+ "standard": "Yes",
+ "system_page": 0,
+ "title": "Bulk PPE Issue"
+}

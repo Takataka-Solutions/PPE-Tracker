@@ -1,0 +1,45 @@
+[
+    {
+        "doctype": "Custom Field",
+        "dt": "Employee",
+        "fieldname": "custom_position_type",
+        "fieldtype": "Select",
+        "options": "Heavy Duty\nStandard",
+        "label": "Position Type",
+        "insert_after": "designation",
+        "module": "PPE Tracker"
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Stock Entry",
+        "fieldname": "custom_ppe_issue",
+        "fieldtype": "Link",
+        "options": "PPE Issue",
+        "label": "PPE Issue",
+        "insert_after": "stock_entry_type",
+        "module": "PPE Tracker",
+        "read_only": 1
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Stock Entry",
+        "fieldname": "custom_ppe_return",
+        "fieldtype": "Link",
+        "options": "PPE Return",
+        "label": "PPE Return",
+        "insert_after": "custom_ppe_issue",
+        "module": "PPE Tracker",
+        "read_only": 1
+    },
+    {
+        "doctype": "Custom Field",
+        "dt": "Additional Salary",
+        "fieldname": "custom_ppe_loss",
+        "fieldtype": "Link",
+        "options": "PPE Loss",
+        "label": "PPE Loss",
+        "insert_after": "salary_component",
+        "module": "PPE Tracker",
+        "read_only": 1
+    }
+]

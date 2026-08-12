@@ -1,0 +1,131 @@
+{
+ "charts": [
+  {
+   "chart_name": "PPE Issues by Status",
+   "label": "PPE Issues by Status"
+  },
+  {
+   "chart_name": "Active PPE Issues by Category",
+   "label": "Active PPE Issues by Category"
+  }
+ ],
+ "content": "[{\"id\":\"shortcut_section\",\"type\":\"header\",\"data\":{\"text\":\"Shortcuts\",\"col\":12}},{\"id\":\"shortcut_ppe_item\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Item\",\"col\":4}},{\"id\":\"shortcut_ppe_role_assignment\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Role Assignment\",\"col\":4}},{\"id\":\"shortcut_ppe_request\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Request\",\"col\":4}},{\"id\":\"shortcut_ppe_issue\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Issue\",\"col\":4}},{\"id\":\"shortcut_ppe_return\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Return\",\"col\":4}},{\"id\":\"shortcut_ppe_loss\",\"type\":\"shortcut\",\"data\":{\"shortcut_name\":\"PPE Loss\",\"col\":4}}]",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "Workspace",
+ "icon": "shield",
+ "label": "PPE Tracker",
+ "links": [
+  {
+   "label": "PPE Item",
+   "link_to": "PPE Item",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Role Assignment",
+   "link_to": "PPE Role Assignment",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Request",
+   "link_to": "PPE Request",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Issue",
+   "link_to": "PPE Issue",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Return",
+   "link_to": "PPE Return",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Loss",
+   "link_to": "PPE Loss",
+   "link_type": "DocType",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Inventory Report",
+   "link_to": "PPE Inventory Report",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Issuance Report",
+   "link_to": "PPE Issuance Report",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Expiry Report",
+   "link_to": "PPE Expiry Report",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "Employee PPE Register",
+   "link_to": "Employee PPE Register",
+   "link_type": "Report",
+   "type": "Link"
+  },
+  {
+   "label": "PPE Due for Replacement",
+   "link_to": "PPE Due for Replacement",
+   "link_type": "Report",
+   "type": "Link"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "PPE Tracker",
+ "owner": "Administrator",
+ "public": 1,
+ "roles": [
+  {"role": "HR Manager"},
+  {"role": "HR User"},
+  {"role": "Safety Officer"},
+  {"role": "Storekeeper"},
+  {"role": "System Manager"}
+ ],
+ "shortcuts": [
+  {
+   "label": "PPE Item",
+   "link_to": "PPE Item",
+   "type": "DocType"
+  },
+  {
+   "label": "PPE Role Assignment",
+   "link_to": "PPE Role Assignment",
+   "type": "DocType"
+  },
+  {
+   "label": "PPE Request",
+   "link_to": "PPE Request",
+   "type": "DocType"
+  },
+  {
+   "label": "PPE Issue",
+   "link_to": "PPE Issue",
+   "type": "DocType"
+  },
+  {
+   "label": "PPE Return",
+   "link_to": "PPE Return",
+   "type": "DocType"
+  },
+  {
+   "label": "PPE Loss",
+   "link_to": "PPE Loss",
+   "type": "DocType"
+  }
+ ],
+ "title": "PPE Tracker"
+}

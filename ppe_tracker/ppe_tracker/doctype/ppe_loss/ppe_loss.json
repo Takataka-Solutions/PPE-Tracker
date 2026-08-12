@@ -1,0 +1,209 @@
+{
+ "actions": [],
+ "autoname": "naming_series:",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "ppe_issue",
+  "employee",
+  "employee_name",
+  "column_break_1",
+  "ppe_item",
+  "loss_date",
+  "reason",
+  "section_break_1",
+  "surcharge_amount",
+  "acknowledgement_status",
+  "acknowledgement_method",
+  "acknowledgement_attachment",
+  "additional_salary"
+ ],
+ "fields": [
+  {
+   "default": "PPE-LOSS-.YYYY.-.####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "hidden": 1,
+   "label": "Naming Series",
+   "options": "PPE-LOSS-.YYYY.-.####",
+   "print_hide": 1,
+   "reqd": 1
+  },
+  {
+   "fieldname": "ppe_issue",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PPE Issue",
+   "options": "PPE Issue",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "ppe_issue.employee",
+   "fieldname": "employee",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Employee",
+   "options": "Employee",
+   "read_only": 1
+  },
+  {
+   "fetch_from": "employee.employee_name",
+   "fieldname": "employee_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employee Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fetch_from": "ppe_issue.ppe_item",
+   "fieldname": "ppe_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PPE Item",
+   "options": "PPE Item",
+   "read_only": 1
+  },
+  {
+   "default": "Today",
+   "fieldname": "loss_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Loss Date",
+   "reqd": 1
+  },
+  {
+   "fieldname": "reason",
+   "fieldtype": "Text",
+   "label": "Reason",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_1",
+   "fieldtype": "Section Break",
+   "label": "Surcharge & Acknowledgement"
+  },
+  {
+   "fieldname": "surcharge_amount",
+   "fieldtype": "Currency",
+   "in_list_view": 1,
+   "label": "Surcharge Amount",
+   "reqd": 1
+  },
+  {
+   "allow_on_submit": 0,
+   "default": "Pending",
+   "fieldname": "acknowledgement_status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Acknowledgement Status",
+   "options": "Pending\nAcknowledged",
+   "read_only": 0
+  },
+  {
+   "fieldname": "acknowledgement_method",
+   "fieldtype": "Select",
+   "label": "Acknowledgement Method",
+   "options": "\nDirect\nSupervisor Uploaded"
+  },
+  {
+   "depends_on": "eval:doc.acknowledgement_method=='Supervisor Uploaded'",
+   "fieldname": "acknowledgement_attachment",
+   "fieldtype": "Attach",
+   "label": "Acknowledgement Attachment"
+  },
+  {
+   "fieldname": "additional_salary",
+   "fieldtype": "Link",
+   "label": "Additional Salary",
+   "options": "Additional Salary",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [
+  {
+   "group": "Payroll",
+   "link_doctype": "Additional Salary",
+   "link_fieldname": "custom_ppe_loss"
+  }
+ ],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "PPE Loss",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Safety Officer",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR User",
+   "share": 1
+  },
+  {
+   "email": 1,
+   "export": 1,
+   "if_owner": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Employee",
+   "share": 1
+  }
+ ],
+ "search_fields": "employee_name,ppe_item,acknowledgement_status",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employee_name",
+ "track_changes": 1
+}

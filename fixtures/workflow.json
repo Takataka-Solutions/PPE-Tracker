@@ -1,0 +1,72 @@
+[
+ {
+  "doctype": "Workflow",
+  "name": "PPE Request Approval",
+  "document_type": "PPE Request",
+  "is_active": 1,
+  "workflow_state_field": "status",
+  "states": [
+   {
+    "state": "Draft",
+    "doc_status": "0",
+    "allow_edit": "All",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Pending Approval",
+    "doc_status": "1",
+    "allow_edit": "HR Manager",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Approved",
+    "doc_status": "1",
+    "allow_edit": "HR Manager",
+    "is_optional_state": 0
+   },
+   {
+    "state": "Rejected",
+    "doc_status": "1",
+    "allow_edit": "HR Manager",
+    "is_optional_state": 0
+   }
+  ],
+  "transitions": [
+   {
+    "state": "Draft",
+    "action": "Submit",
+    "next_state": "Pending Approval",
+    "allowed": "All",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Pending Approval",
+    "action": "Approve",
+    "next_state": "Approved",
+    "allowed": "HR Manager",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Pending Approval",
+    "action": "Approve",
+    "next_state": "Approved",
+    "allowed": "Safety Officer",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Pending Approval",
+    "action": "Reject",
+    "next_state": "Rejected",
+    "allowed": "HR Manager",
+    "allow_self_approval": 1
+   },
+   {
+    "state": "Pending Approval",
+    "action": "Reject",
+    "next_state": "Rejected",
+    "allowed": "Safety Officer",
+    "allow_self_approval": 1
+   }
+  ]
+ }
+]

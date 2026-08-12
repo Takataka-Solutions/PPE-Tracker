@@ -1,0 +1,43 @@
+{
+    "name": "PPE Expiry Report",
+    "doctype": "Report",
+    "report_type": "Script Report",
+    "ref_doctype": "PPE Issue",
+    "is_standard": "Yes",
+    "module": "PPE Tracker",
+    "roles": [
+        {"role": "HR Manager"},
+        {"role": "Safety Officer"},
+        {"role": "System Manager"}
+    ],
+    "filters": [
+        {
+            "fieldname": "ppe_item",
+            "label": "PPE Item",
+            "fieldtype": "Link",
+            "options": "PPE Item"
+        },
+        {
+            "fieldname": "employee",
+            "label": "Employee",
+            "fieldtype": "Link",
+            "options": "Employee"
+        },
+        {
+            "fieldname": "department",
+            "label": "Department",
+            "fieldtype": "Link",
+            "options": "Department"
+        },
+        {
+            "fieldname": "from_date",
+            "label": "From Date",
+            "fieldtype": "Date"
+        },
+        {
+            "fieldname": "to_date",
+            "label": "To Date",
+            "fieldtype": "Date"
+        }
+    ]
+}

@@ -1,0 +1,14 @@
+{
+    "name": "Wornout PPE Warehouse Stock",
+    "doctype": "Dashboard Chart",
+    "chart_name": "Wornout PPE Warehouse Stock",
+    "chart_type": "Group By",
+    "document_type": "Bin",
+    "group_by_type": "Sum",
+    "group_by_based_on": "item_code",
+    "aggregate_function_based_on": "actual_qty",
+    "type": "Bar",
+    "is_standard": 1,
+    "is_public": 1,
+    "module": "PPE Tracker"
+}

@@ -1,0 +1,100 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "warehouse_section",
+  "returned_ppe_warehouse",
+  "default_issue_warehouse",
+  "column_break_1",
+  "wornout_ppe_warehouse",
+  "section_break_workflow",
+  "enable_casuals_ppe_workflow"
+ ],
+ "fields": [
+  {
+   "fieldname": "warehouse_section",
+   "fieldtype": "Section Break",
+   "label": "Warehouse Configuration"
+  },
+  {
+   "fieldname": "returned_ppe_warehouse",
+   "fieldtype": "Link",
+   "label": "Returned PPE Warehouse",
+   "options": "Warehouse",
+   "reqd": 1,
+   "description": "Target warehouse for PPE returned in Good condition"
+  },
+  {
+   "fieldname": "default_issue_warehouse",
+   "fieldtype": "Link",
+   "label": "Default Issue Warehouse",
+   "options": "Warehouse",
+   "reqd": 1,
+   "description": "Source warehouse for standard PPE issues"
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "wornout_ppe_warehouse",
+   "fieldtype": "Link",
+   "label": "Wornout PPE Warehouse",
+   "options": "Warehouse",
+   "reqd": 1,
+   "description": "Target warehouse for PPE returned in Damaged or Unusable condition"
+  },
+  {
+   "fieldname": "section_break_workflow",
+   "fieldtype": "Section Break",
+   "label": "Workflow Settings"
+  },
+  {
+   "default": "0",
+   "fieldname": "enable_casuals_ppe_workflow",
+   "fieldtype": "Check",
+   "label": "Enable Casuals PPE Workflow",
+   "description": "Enable PPE issue workflow for casual workers with mandatory return tracking"
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "issingle": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "PPE Tracker Settings",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 0,
+   "delete": 0,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 1
+}

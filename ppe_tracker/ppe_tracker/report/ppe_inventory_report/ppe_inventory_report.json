@@ -1,0 +1,34 @@
+{
+    "name": "PPE Inventory Report",
+    "doctype": "Report",
+    "report_type": "Script Report",
+    "ref_doctype": "PPE Item",
+    "is_standard": "Yes",
+    "module": "PPE Tracker",
+    "roles": [
+        {"role": "HR Manager"},
+        {"role": "Safety Officer"},
+        {"role": "Storekeeper"},
+        {"role": "System Manager"},
+        {"role": "MRF User"}
+    ],
+    "filters": [
+        {
+            "fieldname": "ppe_item",
+            "label": "PPE Item",
+            "fieldtype": "Link",
+            "options": "PPE Item"
+        },
+        {
+            "fieldname": "ppe_category",
+            "label": "PPE Category",
+            "fieldtype": "Data"
+        },
+        {
+            "fieldname": "warehouse",
+            "label": "Warehouse (Override Total)",
+            "fieldtype": "Link",
+            "options": "Warehouse"
+        }
+    ]
+}

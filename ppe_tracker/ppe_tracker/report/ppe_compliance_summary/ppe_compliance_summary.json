@@ -1,0 +1,15 @@
+{
+    "name": "PPE Compliance Summary",
+    "doctype": "Report",
+    "report_name": "PPE Compliance Summary",
+    "report_type": "Script Report",
+    "ref_doctype": "PPE Role Assignment",
+    "is_standard": "Yes",
+    "module": "PPE Tracker",
+    "roles": [
+        {"role": "HR Manager"},
+        {"role": "Safety Officer"},
+        {"role": "Storekeeper"},
+        {"role": "System Manager"}
+    ]
+}

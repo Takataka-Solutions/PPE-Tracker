@@ -1,0 +1,152 @@
+{
+ "actions": [],
+ "autoname": "field:item_name",
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "item_name",
+  "item_code",
+  "ppe_category",
+  "column_break_1",
+  "default_lifespan",
+  "status",
+  "section_break_lifespan",
+  "lifespan_table",
+  "section_break_sizes",
+  "has_sizes",
+  "available_sizes"
+ ],
+ "fields": [
+  {
+   "fieldname": "item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Name",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "item_code",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Item Code",
+   "options": "Item",
+   "reqd": 1
+  },
+  {
+   "fieldname": "ppe_category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "PPE Category",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_lifespan",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Default Lifespan (Months)",
+   "reqd": 1
+  },
+  {
+   "default": "Active",
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "label": "Status",
+   "options": "Active\nInactive",
+   "reqd": 1
+  },
+  {
+   "fieldname": "section_break_lifespan",
+   "fieldtype": "Section Break",
+   "label": "Position-Type Lifespan"
+  },
+  {
+   "fieldname": "lifespan_table",
+   "fieldtype": "Table",
+   "label": "Lifespan Table",
+   "options": "PPE Item Lifespan"
+  },
+  {
+   "fieldname": "section_break_sizes",
+   "fieldtype": "Section Break",
+   "label": "Size Configuration"
+  },
+  {
+   "default": "0",
+   "description": "Enable if this PPE Item comes in different sizes (linked Item must be an Item Template with variants)",
+   "fieldname": "has_sizes",
+   "fieldtype": "Check",
+   "label": "Has Sizes"
+  },
+  {
+   "depends_on": "eval:doc.has_sizes==1",
+   "description": "Size attribute values from the linked Item Template (read-only reference)",
+   "fieldname": "available_sizes",
+   "fieldtype": "Small Text",
+   "label": "Available Sizes",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "is_submittable": 0,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "PPE Item",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "HR Manager",
+   "share": 1,
+   "write": 1
+  },
+  {
+   "create": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "Safety Officer",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "search_fields": "item_name,ppe_category,item_code",
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "item_name",
+ "track_changes": 1
+}

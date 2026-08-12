@@ -1,0 +1,59 @@
+{
+ "actions": [],
+ "creation": "2024-01-01 00:00:00.000000",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "ppe_item",
+  "ppe_item_name",
+  "size",
+  "item_variant"
+ ],
+ "fields": [
+  {
+   "fieldname": "ppe_item",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "PPE Item",
+   "options": "PPE Item",
+   "reqd": 1
+  },
+  {
+   "fetch_from": "ppe_item.item_name",
+   "fieldname": "ppe_item_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "PPE Item Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "size",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Size",
+   "reqd": 1
+  },
+  {
+   "fieldname": "item_variant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Item Variant",
+   "options": "Item",
+   "read_only": 1
+  }
+ ],
+ "index_web_pages_for_search": 0,
+ "istable": 1,
+ "links": [],
+ "modified": "2024-01-01 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "PPE Tracker",
+ "name": "PPE Size Item",
+ "owner": "Administrator",
+ "permissions": [],
+ "sort_field": "creation",
+ "sort_order": "DESC",
+ "states": [],
+ "track_changes": 0
+}
