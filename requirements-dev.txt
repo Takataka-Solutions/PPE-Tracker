@@ -1,0 +1,13 @@
+# Test-only dependencies. Never installed on a production bench.
+#
+# Install for the standalone suite:
+#   pip install -r requirements-dev.txt
+#   python -m pytest
+#
+# Note the standalone suite runs against the mocked frappe in conftest.py, so a
+# green run is not evidence the app works on a bench. See docs/01_Audit_Findings.md
+# section 2a. For real verification use:
+#   bench --site <site> run-tests --app ppe_tracker
+
+hypothesis==6.165.10
+pytest==9.1.1

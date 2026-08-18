@@ -1,2 +1,13 @@
-frappe
-hypothesis
+# Runtime dependencies for ppe_tracker.
+#
+# frappe is deliberately NOT listed here. It is provided by the bench via
+# `bench init`, not installed from PyPI. Declaring it made `bench get-app` fail:
+# uv tried to resolve frappe from PyPI, hit its `pypika` URL dependency, and
+# refused with "URL dependencies must be expressed as direct requirements".
+# Same reasoning as takataka_solutions' own requirements.txt.
+#
+# Test-only dependencies (hypothesis, pytest) live in requirements-dev.txt so
+# they are never installed on a production bench.
+#
+# This app currently has no third-party runtime dependencies. Add any below,
+# pinned to an exact version.
