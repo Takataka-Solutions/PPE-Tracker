@@ -1,6 +1,7 @@
 [
     {
         "doctype": "Custom Field",
+        "name": "Employee-custom_position_type",
         "dt": "Employee",
         "fieldname": "custom_position_type",
         "fieldtype": "Select",
@@ -11,6 +12,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Stock Entry-custom_ppe_issue",
         "dt": "Stock Entry",
         "fieldname": "custom_ppe_issue",
         "fieldtype": "Link",
@@ -22,6 +24,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Stock Entry-custom_ppe_return",
         "dt": "Stock Entry",
         "fieldname": "custom_ppe_return",
         "fieldtype": "Link",
@@ -33,6 +36,7 @@
     },
     {
         "doctype": "Custom Field",
+        "name": "Additional Salary-custom_ppe_loss",
         "dt": "Additional Salary",
         "fieldname": "custom_ppe_loss",
         "fieldtype": "Link",
