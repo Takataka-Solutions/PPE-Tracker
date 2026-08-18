@@ -61,7 +61,7 @@ frappe.ui.form.on("PPE Issue", {
 function refreshExpiryPreview(frm) {
 	if (frm.doc.ppe_item && frm.doc.employee && frm.doc.issue_date) {
 		frappe.call({
-			method: "ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api.get_resolved_lifespan",
+			method: "ppe_tracker.ppe_tracker.api.ppe_api.get_resolved_lifespan",
 			args: {
 				ppe_item: frm.doc.ppe_item,
 				employee: frm.doc.employee,

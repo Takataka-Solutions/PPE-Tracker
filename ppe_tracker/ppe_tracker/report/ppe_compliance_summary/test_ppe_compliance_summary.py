@@ -16,7 +16,7 @@ Tests cover:
 import unittest
 from unittest.mock import patch, MagicMock
 
-MODULE_PATH = "ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary"
+MODULE_PATH = "ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary"
 
 
 class AttrDict(dict):
@@ -64,7 +64,7 @@ class TestPPEComplianceSummaryRequiredCount(unittest.TestCase):
         mock_issued.return_value = 0
         mock_stock.return_value = 0
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -103,7 +103,7 @@ class TestPPEComplianceSummaryRequiredCount(unittest.TestCase):
         mock_issued.return_value = 0
         mock_stock.return_value = 0
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -123,7 +123,7 @@ class TestPPEComplianceSummaryIssuedQty(unittest.TestCase):
         """get_issued_qty() returns sum of quantities from active PPE Issues."""
         mock_frappe.db.sql.return_value = [D({"total": 7})]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_issued_qty
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_issued_qty
 
         result = get_issued_qty("Safety Helmet")
 
@@ -143,7 +143,7 @@ class TestPPEComplianceSummaryIssuedQty(unittest.TestCase):
         """get_issued_qty() returns 0 when no active PPE Issues exist."""
         mock_frappe.db.sql.return_value = [D({"total": 0})]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_issued_qty
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_issued_qty
 
         result = get_issued_qty("Nonexistent Item")
 
@@ -179,7 +179,7 @@ class TestPPEComplianceSummaryGapCalculation(unittest.TestCase):
         mock_issued.return_value = 3
         mock_stock.return_value = 2
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -210,7 +210,7 @@ class TestPPEComplianceSummaryGapCalculation(unittest.TestCase):
         mock_issued.return_value = 3
         mock_stock.return_value = 5
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -237,7 +237,7 @@ class TestPPEComplianceSummaryGapCalculation(unittest.TestCase):
         mock_issued.return_value = 4
         mock_stock.return_value = 2
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -268,7 +268,7 @@ class TestPPEComplianceSummaryDepartmentFilter(unittest.TestCase):
         mock_issued.return_value = 5
         mock_stock.return_value = 1
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({"department": "Safety"})
 
@@ -318,7 +318,7 @@ class TestPPEComplianceSummaryPPEItemFilter(unittest.TestCase):
         mock_issued.return_value = 2
         mock_stock.return_value = 3
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({"ppe_item": "Gloves"})
 
@@ -339,7 +339,7 @@ class TestPPEComplianceSummaryPPEItemFilter(unittest.TestCase):
             [D({"cnt": 3})],
         ]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({"ppe_item": "Nonexistent PPE"})
 
@@ -357,7 +357,7 @@ class TestPPEComplianceSummaryNoAssignments(unittest.TestCase):
         """get_data() returns empty list when no PPE Role Assignments are found."""
         mock_frappe.db.sql.return_value = []
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({})
 
@@ -368,7 +368,7 @@ class TestPPEComplianceSummaryNoAssignments(unittest.TestCase):
         """get_data() returns empty when dept filter yields no assignments."""
         mock_frappe.db.sql.return_value = []
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_data
 
         result = get_data({"department": "Nonexistent Dept"})
 
@@ -386,7 +386,7 @@ class TestPPEComplianceSummaryHelperFunctions(unittest.TestCase):
         """get_requested_qty() sums from pending/approved/submitted PPE Requests."""
         mock_frappe.db.sql.return_value = [D({"total": 12})]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_requested_qty
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_requested_qty
 
         result = get_requested_qty("Safety Boots")
 
@@ -404,7 +404,7 @@ class TestPPEComplianceSummaryHelperFunctions(unittest.TestCase):
         """get_available_stock() fetches total actual_qty from tabBin."""
         mock_frappe.db.sql.return_value = [D({"total": 25.0})]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_available_stock
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_available_stock
 
         result = get_available_stock("ITEM-BOOTS")
 
@@ -418,7 +418,7 @@ class TestPPEComplianceSummaryHelperFunctions(unittest.TestCase):
     @patch(f"{MODULE_PATH}.frappe")
     def test_get_available_stock_returns_zero_for_none_item_code(self, mock_frappe):
         """get_available_stock() returns 0 when item_code is None."""
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_available_stock
+        from ppe_tracker.ppe_tracker.report.ppe_compliance_summary.ppe_compliance_summary import get_available_stock
 
         result = get_available_stock(None)
 

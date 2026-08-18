@@ -57,7 +57,7 @@ class TestLifespanValuesMustBePositive(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 3: Lifespan Values Must Be Positive
         **Validates: Requirements 1.5, 1.6**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         doc = _make_ppe_item(default_lifespan=invalid_lifespan)
         # Bind the validate method from the controller to our mock doc
@@ -74,7 +74,7 @@ class TestLifespanValuesMustBePositive(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 3: Lifespan Values Must Be Positive
         **Validates: Requirements 1.5, 1.6**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Use a valid default_lifespan (>= 1) so only the child row triggers the error
         child_row = _make_lifespan_row(position_type="Heavy Duty", lifespan=invalid_lifespan)
@@ -107,7 +107,7 @@ class TestPPEItemLinkedItemGroupValidation(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 1: PPE Item Linked Item Group Validation
         **Validates: Requirements 1.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Mock frappe.db.get_value to return the generated non-PPE item group
         mock_get_value.return_value = non_ppe_group
@@ -139,7 +139,7 @@ class TestPositionTypeUniqueness(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 2: PPE Item Lifespan Position Type Uniqueness
         **Validates: Requirements 1.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Create 2 child rows with the SAME position_type
         row1 = _make_lifespan_row(position_type=position_type, lifespan=12)
@@ -160,7 +160,7 @@ class TestPositionTypeUniqueness(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 2: PPE Item Lifespan Position Type Uniqueness
         **Validates: Requirements 1.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Create 3 child rows with the SAME position_type
         rows = []
@@ -211,7 +211,7 @@ class TestHasSizesValidationEnforcesTemplateConstraint(unittest.TestCase):
         Feature: ppe-tracker-enhancements-v2, Property 19: has_sizes Validation Enforces Template Constraint
         **Validates: Requirements 15.2, 15.3**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Mock: item does NOT have variants (not a template)
         mock_get_value.return_value = 0
@@ -235,7 +235,7 @@ class TestHasSizesValidationEnforcesTemplateConstraint(unittest.TestCase):
         Feature: ppe-tracker-enhancements-v2, Property 19: has_sizes Validation Enforces Template Constraint
         **Validates: Requirements 15.2, 15.3**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Mock: item HAS variants (is a template)
         mock_get_value.return_value = 1
@@ -262,7 +262,7 @@ class TestHasSizesValidationEnforcesTemplateConstraint(unittest.TestCase):
         Feature: ppe-tracker-enhancements-v2, Property 19: has_sizes Validation Enforces Template Constraint
         **Validates: Requirements 15.2, 15.3**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+        from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
         # Mock: return whatever has_variants value — it should not matter
         mock_get_value.return_value = has_variants

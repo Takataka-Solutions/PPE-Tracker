@@ -110,7 +110,7 @@ class TestAcknowledgementEmployeeValidation(unittest.TestCase):
         **Validates: Requirements 5.3**
         """
         from hypothesis import given as h_given
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
             PPEIssueAcknowledgement,
         )
         from frappe.exceptions import ValidationError
@@ -148,15 +148,15 @@ class TestAcknowledgementEmployeeValidation(unittest.TestCase):
             return None
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.get_value",
             side_effect=get_value_side_effect,
         ):
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.throw",
                 side_effect=ValidationError,
             ) as mock_throw:
                 with patch(
-                    "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.bold",
+                    "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.bold",
                     side_effect=lambda x: f"<b>{x}</b>",
                 ):
                     with self.assertRaises(ValidationError):
@@ -175,7 +175,7 @@ class TestAcknowledgementEmployeeValidation(unittest.TestCase):
 
         **Validates: Requirements 5.3**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
             PPEIssueAcknowledgement,
         )
 
@@ -193,11 +193,11 @@ class TestAcknowledgementEmployeeValidation(unittest.TestCase):
 
         # Mock frappe.db.get_value to always return the parent employee
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.get_value",
             return_value=parent_employee,
         ):
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.throw",
             ) as mock_throw:
                 # Should NOT raise
                 PPEIssueAcknowledgement._validate_issues_belong_to_employee(mock_doc)
@@ -233,7 +233,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
 
         **Validates: Requirements 5.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
             PPEIssueAcknowledgement,
         )
 
@@ -250,7 +250,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
         mock_doc.ppe_issues = rows
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value"
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value"
         ) as mock_set_value:
             PPEIssueAcknowledgement._set_acknowledgement_on_issues(mock_doc)
 
@@ -277,7 +277,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
 
         **Validates: Requirements 5.7**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
             PPEIssueAcknowledgement,
         )
 
@@ -294,7 +294,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
         mock_doc.ppe_issues = rows
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value"
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value"
         ) as mock_set_value:
             PPEIssueAcknowledgement._clear_acknowledgement_on_issues(mock_doc)
 
@@ -326,7 +326,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
 
         **Validates: Requirements 5.4, 5.7**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement import (
             PPEIssueAcknowledgement,
         )
 
@@ -349,7 +349,7 @@ class TestAcknowledgementSubmitCancelRoundTrip(unittest.TestCase):
             all_calls.append((doctype, name, values.copy()))
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue_acknowledgement.ppe_issue_acknowledgement.frappe.db.set_value",
             side_effect=track_set_value,
         ):
             # Submit

@@ -86,7 +86,7 @@ class TestPPELoss(unittest.TestCase):
 		'Acknowledged', THE System SHALL automatically create an Additional Salary
 		record with a deduction type.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+		from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
 		mock_additional_salary = MagicMock()
 		mock_additional_salary.name = "AS-001"
@@ -126,7 +126,7 @@ class TestPPELoss(unittest.TestCase):
 		'Supervisor Uploaded' and no attachment is present, THEN THE System SHALL
 		raise a validation error and prevent saving with 'Acknowledged' status.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+		from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
 		doc = _make_ppe_loss(
 			acknowledgement_method="Supervisor Uploaded",
@@ -153,7 +153,7 @@ class TestPPELoss(unittest.TestCase):
 		Requirement 6.8: THE System SHALL store a link to the created Additional
 		Salary record on the PPE Loss DocType for traceability.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+		from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
 		mock_additional_salary = MagicMock()
 		mock_additional_salary.name = "AS-002"
@@ -190,7 +190,7 @@ class TestPPELoss(unittest.TestCase):
 		Requirement 6.8: THE System SHALL store a link to the created Additional
 		Salary record on the PPE Loss DocType for traceability.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+		from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
 		mock_additional_salary = MagicMock()
 		mock_additional_salary.name = "AS-003"

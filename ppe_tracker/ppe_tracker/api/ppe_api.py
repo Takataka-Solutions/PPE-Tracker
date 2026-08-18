@@ -8,7 +8,7 @@ Provides REST-accessible helper functions for PPE management operations.
 import frappe
 from frappe import _
 
-from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
+from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
 
 
 @frappe.whitelist()

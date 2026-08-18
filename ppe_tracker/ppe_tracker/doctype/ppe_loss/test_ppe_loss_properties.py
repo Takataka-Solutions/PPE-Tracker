@@ -79,7 +79,7 @@ class TestSupervisorUploadedRequiresAttachment(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 16: Supervisor Uploaded Acknowledgement Requires Attachment
         **Validates: Requirements 6.6**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+        from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
         doc = _make_ppe_loss_doc(
             acknowledgement_method="Supervisor Uploaded",
@@ -108,7 +108,7 @@ class TestAcknowledgementAutoCreatesAdditionalSalary(unittest.TestCase):
         employee_id=integers(min_value=1, max_value=99999),
     )
     @settings(max_examples=25)
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss.frappe")
+    @patch("ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss.frappe")
     def test_acknowledgement_creates_additional_salary_with_correct_fields(
         self, mock_frappe, surcharge, employee_id
     ):
@@ -118,7 +118,7 @@ class TestAcknowledgementAutoCreatesAdditionalSalary(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 17: Acknowledgement Auto-Creates Additional Salary with Correct Amount
         **Validates: Requirements 6.7, 6.8**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
+        from ppe_tracker.ppe_tracker.doctype.ppe_loss.ppe_loss import PPELoss
 
         employee = f"HR-EMP-{employee_id:05d}"
 

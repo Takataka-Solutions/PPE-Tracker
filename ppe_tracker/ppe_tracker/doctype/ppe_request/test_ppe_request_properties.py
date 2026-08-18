@@ -56,7 +56,7 @@ class TestPPERequestStateMachineValidity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 5: PPE Request State Machine Validity
         **Validates: Requirements 3.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         transition = (old_status, new_status)
 
@@ -104,7 +104,7 @@ class TestPPERequestStateMachineValidity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 5: PPE Request State Machine Validity
         **Validates: Requirements 3.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         transition = (old_status, new_status)
 
@@ -143,7 +143,7 @@ class TestPPERequestStateMachineValidity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 5: PPE Request State Machine Validity
         **Validates: Requirements 3.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         # Only test transitions TO restricted statuses
         if new_status not in ("Approved", "Rejected", "Issued"):
@@ -186,7 +186,7 @@ class TestPPERequestProperty6(unittest.TestCase):
 
     @given(rejection_reason=just(""))
     @settings(max_examples=25)
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
+    @patch("ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
     def test_rejected_with_empty_reason_raises_validation_error(self, mock_frappe, rejection_reason):
         """
         Property 6 (negative case): For any PPE Request with status='Rejected'
@@ -199,7 +199,7 @@ class TestPPERequestProperty6(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 6: Rejection Requires a Reason
         **Validates: Requirements 3.5**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         # Configure frappe.throw to raise ValidationError
         mock_frappe.throw = MagicMock(side_effect=ValidationError("Rejection Reason is mandatory"))
@@ -212,7 +212,7 @@ class TestPPERequestProperty6(unittest.TestCase):
 
         mock_frappe.throw.assert_called_once()
 
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
+    @patch("ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
     def test_rejected_with_none_reason_raises_validation_error(self, mock_frappe):
         """
         Property 6 (negative case variant): For any PPE Request with
@@ -222,7 +222,7 @@ class TestPPERequestProperty6(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 6: Rejection Requires a Reason
         **Validates: Requirements 3.5**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         # Configure frappe.throw to raise ValidationError
         mock_frappe.throw = MagicMock(side_effect=ValidationError("Rejection Reason is mandatory"))
@@ -237,7 +237,7 @@ class TestPPERequestProperty6(unittest.TestCase):
 
     @given(rejection_reason=text(min_size=1).filter(lambda s: s.strip()))
     @settings(max_examples=25)
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
+    @patch("ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request.frappe")
     def test_rejected_with_non_empty_reason_does_not_raise(self, mock_frappe, rejection_reason):
         """
         Property 6 (positive case): For any PPE Request with status='Rejected'
@@ -247,7 +247,7 @@ class TestPPERequestProperty6(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 6: Rejection Requires a Reason
         **Validates: Requirements 3.5**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+        from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
         # Configure frappe.throw — should NOT be called
         mock_frappe.throw = MagicMock(side_effect=ValidationError("Should not be called"))

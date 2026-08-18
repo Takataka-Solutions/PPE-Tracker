@@ -35,7 +35,7 @@ class TestApprovePPERequest(unittest.TestCase):
 		Requirement 3.8: THE System SHALL restrict PPE Request approval to users
 		holding the HR Manager, Safety Officer, or HR User role.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import approve_ppe_request
+		from ppe_tracker.ppe_tracker.api.ppe_api import approve_ppe_request
 
 		with self.assertRaises(PermissionError):
 			approve_ppe_request("PPE-REQ-2024-0001")
@@ -58,7 +58,7 @@ class TestApprovePPERequest(unittest.TestCase):
 
 		Requirement 3.4: Only PPE Requests with status 'Submitted' can be approved.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import approve_ppe_request
+		from ppe_tracker.ppe_tracker.api.ppe_api import approve_ppe_request
 
 		# Mock a PPE Request with status 'Draft' (not Submitted)
 		mock_request = MagicMock()
@@ -89,7 +89,7 @@ class TestRejectPPERequest(unittest.TestCase):
 		SHALL require a rejection reason to be recorded. Rejecting without a reason
 		raises a validation error.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import reject_ppe_request
+		from ppe_tracker.ppe_tracker.api.ppe_api import reject_ppe_request
 
 		with self.assertRaises(ValidationError):
 			reject_ppe_request("PPE-REQ-2024-0003", "")
@@ -108,7 +108,7 @@ class TestRejectPPERequest(unittest.TestCase):
 
 		Requirement 3.5: Empty or whitespace-only reasons are treated as not provided.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import reject_ppe_request
+		from ppe_tracker.ppe_tracker.api.ppe_api import reject_ppe_request
 
 		with self.assertRaises(ValidationError):
 			reject_ppe_request("PPE-REQ-2024-0004", "   ")
@@ -137,7 +137,7 @@ class TestAcknowledgeLoss(unittest.TestCase):
 		path) to the Employee linked on the record or users holding the HR Manager
 		or Safety Officer role.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import acknowledge_loss
+		from ppe_tracker.ppe_tracker.api.ppe_api import acknowledge_loss
 
 		# Mock PPE Loss document
 		mock_loss_doc = MagicMock()
@@ -159,8 +159,8 @@ class TestGetResolvedLifespan(unittest.TestCase):
 	Requirements: 4.3, 4.4
 	"""
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api._determine_lifespan_source", return_value="position_type_match")
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api.resolve_lifespan", return_value=6)
+	@patch("ppe_tracker.ppe_tracker.api.ppe_api._determine_lifespan_source", return_value="position_type_match")
+	@patch("ppe_tracker.ppe_tracker.api.ppe_api.resolve_lifespan", return_value=6)
 	def test_returns_correct_lifespan_for_position_type_match(
 		self, mock_resolve, mock_source
 	):
@@ -170,7 +170,7 @@ class TestGetResolvedLifespan(unittest.TestCase):
 		the employee's Position Type from the linked Employee record, look up the
 		matching row in the PPE Item Lifespan child table, and use that row's lifespan.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import get_resolved_lifespan
+		from ppe_tracker.ppe_tracker.api.ppe_api import get_resolved_lifespan
 
 		result = get_resolved_lifespan("PPE-HELMET", "EMP-001")
 
@@ -179,8 +179,8 @@ class TestGetResolvedLifespan(unittest.TestCase):
 		mock_resolve.assert_called_once_with("PPE-HELMET", "EMP-001")
 		mock_source.assert_called_once_with("PPE-HELMET", "EMP-001")
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api._determine_lifespan_source", return_value="default")
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api.resolve_lifespan", return_value=12)
+	@patch("ppe_tracker.ppe_tracker.api.ppe_api._determine_lifespan_source", return_value="default")
+	@patch("ppe_tracker.ppe_tracker.api.ppe_api.resolve_lifespan", return_value=12)
 	def test_returns_default_lifespan_when_no_position_type_match(
 		self, mock_resolve, mock_source
 	):
@@ -190,7 +190,7 @@ class TestGetResolvedLifespan(unittest.TestCase):
 		PPE Item Lifespan child table, THEN THE System SHALL fall back to the PPE
 		Item default lifespan.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import get_resolved_lifespan
+		from ppe_tracker.ppe_tracker.api.ppe_api import get_resolved_lifespan
 
 		result = get_resolved_lifespan("PPE-GLOVES", "EMP-002")
 
@@ -209,7 +209,7 @@ class TestGetResolvedLifespan(unittest.TestCase):
 		Requirement 4.3: The system looks up the matching row in the PPE Item
 		Lifespan child table based on the employee's position type.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import _determine_lifespan_source
+		from ppe_tracker.ppe_tracker.api.ppe_api import _determine_lifespan_source
 
 		# Mock PPE Item with a lifespan_table row matching "Heavy Duty"
 		mock_ppe_item = MagicMock()
@@ -232,7 +232,7 @@ class TestGetResolvedLifespan(unittest.TestCase):
 		Requirement 4.4: Falls back to default lifespan when no lifespan table
 		row matches the employee's position type.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.api.ppe_api import _determine_lifespan_source
+		from ppe_tracker.ppe_tracker.api.ppe_api import _determine_lifespan_source
 
 		# Mock PPE Item with a lifespan_table row for "Heavy Duty" only
 		mock_ppe_item = MagicMock()

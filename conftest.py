@@ -1,72 +1,82 @@
-"""
-Root conftest.py for standalone pytest execution of ppe_tracker tests.
+"""Root conftest.py for standalone pytest execution of ppe_tracker tests.
 
-In a Frappe bench environment, the bench's apps/ directory is on sys.path,
-which makes `import ppe_tracker.ppe_tracker.*` work (the outer ppe_tracker/
-is a namespace package containing the inner ppe_tracker/ package).
+Module resolution
+-----------------
+Run from the repository root, `import ppe_tracker` resolves to the app package
+(`./ppe_tracker/`), and `ppe_tracker.ppe_tracker` resolves to the module
+directory (`./ppe_tracker/ppe_tracker/`). That is exactly how a Frappe bench
+resolves it, because `pip install -e apps/ppe_tracker` puts the repository root
+on `sys.path`.
 
-For standalone testing (e.g., `python -m pytest` from this directory), we
-replicate that by registering a shim so that `ppe_tracker.ppe_tracker` resolves
-to the inner package, which is already importable as just `ppe_tracker`.
+No sys.modules aliasing is done here, deliberately. An earlier version of this
+file registered `sys.modules["ppe_tracker.ppe_tracker"]` as the app package,
+which shifted every import by one level. Broken paths resolved under pytest and
+failed on a real bench, so the test suite passed while `bench migrate` could not
+run. See docs/01_Audit_Findings.md section 2a and BLOCK-001.
+
+The canonical import prefix is three levels: `ppe_tracker.ppe_tracker.<thing>`.
+If a test needs a shim to import something, the layout is wrong -- fix the
+layout, not the conftest.
+
+What this file does provide
+---------------------------
+A `frappe` stand-in so controllers can be imported and unit-tested without a
+bench. Real exception and Document classes, everything else a MagicMock.
+
+This means the standalone suite exercises logic against a fake framework. It has
+no database, no document lifecycle, and no permission model. A green run here is
+NOT evidence that the app works on a bench -- for that, use
+`bench --site <site> run-tests --app ppe_tracker` plus a functional walkthrough.
 """
 import sys
-import os
-from unittest.mock import MagicMock
 from types import ModuleType
+from unittest.mock import MagicMock
 
-_this_dir = os.path.dirname(os.path.abspath(__file__))
-_inner_pkg_dir = os.path.join(_this_dir, "ppe_tracker")
-
-
-# ---------------------------------------------------------------------------
-# Build a frappe mock that provides real exception classes and a real Document
-# base class so that controllers can be imported and tested without the full
-# Frappe framework.
-# ---------------------------------------------------------------------------
 
 class _ValidationError(Exception):
     """Stand-in for frappe.exceptions.ValidationError."""
-    pass
 
 
 class _Document:
     """Minimal stand-in for frappe.model.document.Document."""
-    pass
 
 
 if "frappe.utils" not in sys.modules:
     _frappe_mock = MagicMock()
 
-    # Make ValidationError a real exception class
+    # Real exception class so `assertRaises` and `except` behave normally
     _frappe_mock.ValidationError = _ValidationError
     _frappe_mock.exceptions.ValidationError = _ValidationError
 
-    # Make Document a real class so that subclassing works
+    # Real class so subclassing in controllers works
     _frappe_mock.model.document.Document = _Document
 
-    # Provide frappe._() as a pass-through for translation strings
+    # frappe._() as a pass-through for translation strings
     _frappe_mock._ = lambda s: s
     _frappe_mock.__call__ = lambda self, s: s
 
-    # Make frappe.whitelist() a passthrough decorator so decorated functions
-    # retain their original implementation when imported during testing
-    _frappe_mock.whitelist = lambda *args, **kwargs: (lambda fn: fn) if not args or callable(args[0]) else (lambda fn: fn)
+    # frappe.whitelist() as a passthrough decorator, so decorated functions keep
+    # their original implementation when imported during testing
+    _frappe_mock.whitelist = lambda *args, **kwargs: (
+        (lambda fn: fn) if not args or callable(args[0]) else (lambda fn: fn)
+    )
 
     sys.modules.setdefault("frappe", _frappe_mock)
     sys.modules.setdefault("frappe.utils", _frappe_mock.utils)
     sys.modules.setdefault("frappe.model", _frappe_mock.model)
     sys.modules.setdefault("frappe.model.document", _frappe_mock.model.document)
 
-    # Create a real module for frappe.exceptions so `from frappe.exceptions import ...` works
+    # Real module objects for the submodules that are imported by name, so that
+    # `from frappe.X import Y` resolves. A MagicMock attribute is not importable.
     _exceptions_mod = ModuleType("frappe.exceptions")
     _exceptions_mod.ValidationError = _ValidationError
     sys.modules["frappe.exceptions"] = _exceptions_mod
 
-# Import the inner ppe_tracker package (which is what pip install -e gives us)
-import ppe_tracker as _inner_pkg
-
-# Now make `ppe_tracker.ppe_tracker` resolve to the same inner package.
-# This simulates the Frappe bench environment where the outer dir is a namespace pkg.
-if "ppe_tracker.ppe_tracker" not in sys.modules:
-    sys.modules["ppe_tracker.ppe_tracker"] = _inner_pkg
-
+    # install.py does `from frappe.permissions import add_permission, ...`.
+    # Without this the permission-seeding code cannot be imported or tested.
+    _permissions_mod = ModuleType("frappe.permissions")
+    _permissions_mod.add_permission = MagicMock(name="add_permission")
+    _permissions_mod.update_permission_property = MagicMock(
+        name="update_permission_property"
+    )
+    sys.modules["frappe.permissions"] = _permissions_mod

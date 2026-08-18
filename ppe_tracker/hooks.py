@@ -19,8 +19,8 @@ app_license = "MIT"
 # Installation
 # ------------
 
-# before_install = "ppe_tracker.install.before_install"
-# after_install = "ppe_tracker.install.after_install"
+# before_install = "ppe_tracker.ppe_tracker.install.before_install"
+# after_install = "ppe_tracker.ppe_tracker.install.after_install"
 after_migrate = ["ppe_tracker.ppe_tracker.install.after_migrate"]
 
 # Fixtures

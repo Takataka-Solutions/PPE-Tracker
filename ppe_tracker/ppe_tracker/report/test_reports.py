@@ -20,8 +20,8 @@ class TestPPEInventoryReportActiveIssuedCount(unittest.TestCase):
     Requirement 10.1: The report SHALL display active issued quantity per PPE Item.
     """
 
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report.get_stock_qty")
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report.frappe")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report.get_stock_qty")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report.frappe")
     def test_ppe_inventory_report_active_issued_count(self, mock_frappe, mock_get_stock_qty):
         """get_data() returns correct active_issued count from frappe.db.count."""
         # Setup: one PPE Item returned
@@ -40,7 +40,7 @@ class TestPPEInventoryReportActiveIssuedCount(unittest.TestCase):
         # Mock frappe.db.count for PPE Issue active records
         mock_frappe.db.count.return_value = 5
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_inventory_report.ppe_inventory_report import get_data
 
         result = get_data({"ppe_item": None})
 
@@ -61,7 +61,7 @@ class TestEmployeePPERegisterEmployeeFilter(unittest.TestCase):
     SHALL automatically restrict results to that user's own linked Employee record.
     """
 
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.employee_ppe_register.employee_ppe_register.frappe")
+    @patch("ppe_tracker.ppe_tracker.report.employee_ppe_register.employee_ppe_register.frappe")
     def test_employee_ppe_register_restricts_to_own_record(self, mock_frappe):
         """get_employee_filter() sets filters['employee'] when user is Employee-only."""
         # Setup: user only has Employee and All roles (no elevated roles)
@@ -72,7 +72,7 @@ class TestEmployeePPERegisterEmployeeFilter(unittest.TestCase):
         # Mock lookup of Employee record by user_id
         mock_frappe.db.get_value.return_value = "EMP-001"
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.employee_ppe_register.employee_ppe_register import (
+        from ppe_tracker.ppe_tracker.report.employee_ppe_register.employee_ppe_register import (
             get_employee_filter,
         )
 
@@ -95,10 +95,10 @@ class TestPPEDueForReplacementDefaultWindow(unittest.TestCase):
     THE report SHALL default to 30 days.
     """
 
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff")
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days")
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today")
-    @patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today")
+    @patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe")
     def test_ppe_due_for_replacement_defaults_window_to_30(
         self, mock_frappe, mock_today, mock_add_days, mock_date_diff
     ):
@@ -107,7 +107,7 @@ class TestPPEDueForReplacementDefaultWindow(unittest.TestCase):
         mock_add_days.return_value = "2024-07-15"
         mock_frappe.get_all.return_value = []  # No issues found
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import (
+        from ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import (
             execute,
         )
 

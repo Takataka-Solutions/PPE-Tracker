@@ -39,7 +39,7 @@ def _make_item_row(ppe_item="TEST-PPE-ITEM", quantity=1, idx=1):
 
 # Target module path for patching frappe.throw inside the controller
 _CONTROLLER_MODULE = (
-    "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment"
+    "ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment"
 )
 
 
@@ -61,7 +61,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         mock_frappe.throw.side_effect = ValidationError("scope error")
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -81,7 +81,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         """
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -100,7 +100,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         """
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -119,7 +119,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         """
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -143,7 +143,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         mock_frappe.throw.side_effect = ValidationError("items error")
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -165,7 +165,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         mock_frappe.throw.side_effect = ValidationError("quantity error")
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -185,7 +185,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         """
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 
@@ -204,7 +204,7 @@ class TestPPERoleAssignment(unittest.TestCase):
         """
         mock_frappe._ = lambda s: s
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_role_assignment.ppe_role_assignment import (
             PPERoleAssignment,
         )
 

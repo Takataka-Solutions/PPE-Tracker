@@ -95,7 +95,7 @@ class TestExpiryDateCalculationCorrectness(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 9: Expiry Date Calculation Correctness
         **Validates: Requirements 4.3, 4.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
 
         # Mock employee with a specific position_type
         mock_employee = MagicMock()
@@ -136,7 +136,7 @@ class TestExpiryDateCalculationCorrectness(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 9: Expiry Date Calculation Correctness
         **Validates: Requirements 4.3, 4.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
 
         # Employee has position_type=None (no match possible)
         mock_employee = MagicMock()
@@ -179,7 +179,7 @@ class TestExpiryDateCalculationCorrectness(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 9: Expiry Date Calculation Correctness
         **Validates: Requirements 4.3, 4.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Determine expected lifespan based on position_type match
         if position_type is not None:
@@ -255,7 +255,7 @@ class TestPPEIssueRequiresApprovedRequest(unittest.TestCase):
         **Validates: Requirements 4.2**
         """
         from frappe.exceptions import ValidationError
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document
         mock_doc = MagicMock()
@@ -268,12 +268,12 @@ class TestPPEIssueRequiresApprovedRequest(unittest.TestCase):
 
         # Mock frappe.db.get_value to return the non-Approved status
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
             return_value=status,
         ) as mock_get_value:
             # Mock frappe.throw to raise ValidationError
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
                 side_effect=ValidationError,
             ) as mock_throw:
                 with self.assertRaises(ValidationError):
@@ -310,7 +310,7 @@ class TestInactivePPEItemBlocksNewIssues(unittest.TestCase):
         **Validates: Requirements 1.7, 4.7**
         """
         from frappe.exceptions import ValidationError
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Mock PPE Item with status = "Inactive"
         mock_ppe_item = MagicMock()
@@ -382,7 +382,7 @@ class TestPPEIssueSubmissionCreatesStockEntry(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 11: PPE Issue Submission Creates Material Issue Stock Entry
         **Validates: Requirements 4.6, 17.2, 17.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Mock Stock Entry document
         mock_stock_entry = MagicMock()
@@ -480,7 +480,7 @@ class TestNewPPEIssueStatusIsActive(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 10: New PPE Issue Status is Active
         **Validates: Requirements 4.5**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document
         mock_doc = MagicMock()
@@ -514,7 +514,7 @@ class TestApprovedRequestTransitionsToIssued(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 7: Approved Request Transitions to Issued on PPE Issue Creation
         **Validates: Requirements 3.7**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document
         mock_doc = MagicMock()
@@ -527,12 +527,12 @@ class TestApprovedRequestTransitionsToIssued(unittest.TestCase):
 
         # Mock frappe.db.get_value to return "Approved" for the PPE Request status
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
             return_value="Approved",
         ):
             # Mock frappe.db.set_value to capture the status update call
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.set_value"
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.set_value"
             ) as mock_set_value:
                 # Simulate the on_submit logic that updates PPE Request status to "Issued"
                 # After successful validation and stock entry creation, the code does:
@@ -567,7 +567,7 @@ class TestReplacementIssueTransitionsOriginalToReplaced(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 19: Replacement Issue Transitions Original to Replaced
         **Validates: Requirements 7.3**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         existing_issue_name = "PPE-ISSUE-ORIG-001"
 
@@ -584,12 +584,12 @@ class TestReplacementIssueTransitionsOriginalToReplaced(unittest.TestCase):
         # Mock frappe.get_all to return an existing Active issue for same employee + ppe_item
         # pluck="name" returns a flat list of names
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.get_all",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.get_all",
             return_value=[existing_issue_name],
         ) as mock_get_all:
             # Mock frappe.db.set_value to capture the status update
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.set_value"
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.set_value"
             ) as mock_set_value:
                 # Simulate calling _mark_replaced_if_needed on the new issue
                 # The method queries for Active PPE Issues with same employee + ppe_item

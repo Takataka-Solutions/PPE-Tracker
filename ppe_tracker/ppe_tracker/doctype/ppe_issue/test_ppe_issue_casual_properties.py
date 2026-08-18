@@ -45,7 +45,7 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
         **Validates: Requirements 9.2**
         """
         from frappe.exceptions import ValidationError
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document with issue_type = "Casual"
         mock_doc = MagicMock()
@@ -56,7 +56,7 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
         mock_doc.employee = "EMP-001"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
             side_effect=ValidationError,
         ) as mock_throw:
             with self.assertRaises(ValidationError):
@@ -79,7 +79,7 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
 
         **Validates: Requirements 9.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document with issue_type = "Casual" and valid date
         mock_doc = MagicMock()
@@ -90,14 +90,14 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
         mock_doc.employee = "EMP-001"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
         ) as mock_throw:
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
                 return_value="Casual",
             ):
                 with patch(
-                    "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
+                    "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
                     side_effect=lambda x: x,
                 ):
                     PPEIssue._validate_casual_issue(mock_doc)
@@ -114,7 +114,7 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
 
         **Validates: Requirements 9.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document with non-Casual issue_type
         mock_doc = MagicMock()
@@ -125,7 +125,7 @@ class TestCasualIssueRequiresExpectedReturnDate(unittest.TestCase):
         mock_doc.employee = "EMP-001"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
         ) as mock_throw:
             PPEIssue._validate_casual_issue(mock_doc)
 
@@ -157,7 +157,7 @@ class TestCasualIssueValidatesEmployeeType(unittest.TestCase):
         **Validates: Requirements 9.5**
         """
         from frappe.exceptions import ValidationError
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document with issue_type = "Casual"
         mock_doc = MagicMock()
@@ -168,15 +168,15 @@ class TestCasualIssueValidatesEmployeeType(unittest.TestCase):
         mock_doc.employee = "EMP-001"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
             return_value=employment_type,
         ):
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
                 side_effect=lambda x: x,
             ):
                 with patch(
-                    "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+                    "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
                     side_effect=ValidationError,
                 ) as mock_throw:
                     with self.assertRaises(ValidationError):
@@ -200,7 +200,7 @@ class TestCasualIssueValidatesEmployeeType(unittest.TestCase):
 
         **Validates: Requirements 9.5**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+        from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
         # Create a mock PPE Issue document with issue_type = "Casual"
         mock_doc = MagicMock()
@@ -211,15 +211,15 @@ class TestCasualIssueValidatesEmployeeType(unittest.TestCase):
         mock_doc.employee = "EMP-001"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.db.get_value",
             return_value="Casual",
         ):
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
+                "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.bold",
                 side_effect=lambda x: x,
             ):
                 with patch(
-                    "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
+                    "ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue.frappe.throw",
                 ) as mock_throw:
                     PPEIssue._validate_casual_issue(mock_doc)
 

@@ -42,7 +42,7 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 13: Return Quantity Cannot Exceed Issued Quantity
         **Validates: Requirements 5.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+        from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
         quantity_returned = issued_qty + excess  # Always exceeds
 
@@ -53,12 +53,12 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
 
         # Mock frappe.db.get_value to return the issued quantity
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
             return_value=issued_qty,
         ) as mock_get_value:
             # Mock frappe.throw to raise ValidationError
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
                 side_effect=ValidationError,
             ) as mock_throw:
                 with self.assertRaises(ValidationError):
@@ -83,7 +83,7 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 13: Return Quantity Cannot Exceed Issued Quantity
         **Validates: Requirements 5.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+        from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
         # Create a mock PPE Return document with quantity_returned == issued_qty
         mock_doc = MagicMock()
@@ -92,12 +92,12 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
 
         # Mock frappe.db.get_value to return the issued quantity
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
             return_value=issued_qty,
         ) as mock_get_value:
             # Mock frappe.throw — should NOT be called
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
                 side_effect=ValidationError,
             ) as mock_throw:
                 # Should not raise
@@ -117,7 +117,7 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 13: Return Quantity Cannot Exceed Issued Quantity
         **Validates: Requirements 5.4**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+        from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
         # Create a mock PPE Return document with quantity_returned < issued_qty
         mock_doc = MagicMock()
@@ -126,12 +126,12 @@ class TestReturnQuantityCannotExceedIssuedQuantity(unittest.TestCase):
 
         # Mock frappe.db.get_value to return the issued quantity
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
+            "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.get_value",
             return_value=issued_qty,
         ) as mock_get_value:
             # Mock frappe.throw — should NOT be called
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
+                "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.throw",
                 side_effect=ValidationError,
             ) as mock_throw:
                 # Should not raise
@@ -165,7 +165,7 @@ class TestCancellationCreatesReverseStockEntry(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 24: Cancellation Creates Reverse Stock Entry
         **Validates: Requirements 17.6**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+        from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
         # Create a mock PPE Return document with a linked stock_entry
         mock_doc = MagicMock()
@@ -176,11 +176,11 @@ class TestCancellationCreatesReverseStockEntry(unittest.TestCase):
         mock_se = MagicMock()
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.get_doc",
+            "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.get_doc",
             return_value=mock_se,
         ) as mock_get_doc:
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.set_value",
+                "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.set_value",
             ) as mock_set_value:
                 PPEReturn.on_cancel(mock_doc)
 
@@ -210,7 +210,7 @@ class TestCancellationCreatesReverseStockEntry(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 24: Cancellation Creates Reverse Stock Entry
         **Validates: Requirements 17.6**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+        from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
         # Create a mock PPE Return document with NO linked stock_entry
         mock_doc = MagicMock()
@@ -218,10 +218,10 @@ class TestCancellationCreatesReverseStockEntry(unittest.TestCase):
         mock_doc.ppe_issue = "PPE-ISS-002"
 
         with patch(
-            "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.get_doc",
+            "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.get_doc",
         ) as mock_get_doc:
             with patch(
-                "ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.set_value",
+                "ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return.frappe.db.set_value",
             ) as mock_set_value:
                 PPEReturn.on_cancel(mock_doc)
 

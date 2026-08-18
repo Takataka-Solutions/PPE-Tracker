@@ -67,7 +67,7 @@ class TestPPEReturn(unittest.TestCase):
 		the original issued quantity on the linked PPE Issue, THEN THE System
 		SHALL raise a validation error and prevent submission.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(ppe_issue="ISS-001", quantity_returned=5)
 
@@ -89,7 +89,7 @@ class TestPPEReturn(unittest.TestCase):
 		THEN THE System SHALL prevent the creation of a new PPE Return referencing
 		that PPE Issue.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(ppe_issue="ISS-RETURNED")
 
@@ -111,7 +111,7 @@ class TestPPEReturn(unittest.TestCase):
 		THEN THE System SHALL prevent the creation of a new PPE Return referencing
 		that PPE Issue.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(ppe_issue="ISS-REPLACED")
 
@@ -131,7 +131,7 @@ class TestPPEReturn(unittest.TestCase):
 		Requirement 5.2: WHEN a PPE Return record is submitted, THE System SHALL
 		update the status of the linked PPE Issue record to 'Returned'.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(ppe_issue="ISS-ACTIVE-001")
 
@@ -152,7 +152,7 @@ class TestPPEReturn(unittest.TestCase):
 		Requirement 5.2 (inverse): WHEN a PPE Return is cancelled, THE System
 		SHALL revert the PPE Issue status to 'Active'.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(ppe_issue="ISS-RETURNED-001", stock_entry=None)
 
@@ -178,7 +178,7 @@ class TestPPEReturn(unittest.TestCase):
 		THE System SHALL create a corresponding ERPNext Stock Entry of type
 		'Material Receipt' to increment stock for the returned quantity.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		mock_se = MagicMock()
 		mock_se.name = "SE-RET-001"
@@ -210,7 +210,7 @@ class TestPPEReturn(unittest.TestCase):
 		Requirement 5.4: WHEN a PPE Return record is submitted with condition
 		'Damaged', THE System SHALL NOT create a Stock Entry; the item is disposed.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(condition="Damaged")
 
@@ -226,7 +226,7 @@ class TestPPEReturn(unittest.TestCase):
 		Requirement 5.4: WHEN a PPE Return record is submitted with condition
 		'Unusable', THE System SHALL NOT create a Stock Entry; the item is disposed.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
+		from ppe_tracker.ppe_tracker.doctype.ppe_return.ppe_return import PPEReturn
 
 		doc = _make_ppe_return(condition="Unusable")
 

@@ -28,7 +28,7 @@ class TestPPETrackerSettings(FrappeTestCase):
 		"""Return the PPE Tracker Settings singleton document."""
 		return frappe.get_doc("PPE Tracker Settings")
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
+	@patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
 	def test_valid_configuration_saves_successfully(self, mock_get_value):
 		"""Three distinct existing active warehouses should save without error.
 
@@ -50,7 +50,7 @@ class TestPPETrackerSettings(FrappeTestCase):
 		# Should not raise any exception
 		doc.validate()
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
+	@patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
 	def test_duplicate_warehouses_raise_validation_error(self, mock_get_value):
 		"""Same warehouse in two or more fields should raise frappe.ValidationError.
 
@@ -72,7 +72,7 @@ class TestPPETrackerSettings(FrappeTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			doc.validate()
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
+	@patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
 	def test_all_three_same_warehouses_raise_validation_error(self, mock_get_value):
 		"""All three fields set to the same warehouse should raise validation error.
 
@@ -93,7 +93,7 @@ class TestPPETrackerSettings(FrappeTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			doc.validate()
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
+	@patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
 	def test_nonexistent_warehouse_raises_validation_error(self, mock_get_value):
 		"""A warehouse name that doesn't exist in the DB should raise error.
 
@@ -117,7 +117,7 @@ class TestPPETrackerSettings(FrappeTestCase):
 		with self.assertRaises(frappe.ValidationError):
 			doc.validate()
 
-	@patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
+	@patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe.db.get_value")
 	def test_disabled_warehouse_raises_validation_error(self, mock_get_value):
 		"""A warehouse that exists but has disabled=1 should raise error.
 

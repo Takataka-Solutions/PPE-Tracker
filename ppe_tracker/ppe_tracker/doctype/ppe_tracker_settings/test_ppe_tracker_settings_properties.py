@@ -92,7 +92,7 @@ class TestWarehouseUniquenessValidation(unittest.TestCase):
         # Only test cases where at least two are the same
         assume(len(set(triple)) < 3)
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
             PPETrackerSettings,
         )
 
@@ -105,7 +105,7 @@ class TestWarehouseUniquenessValidation(unittest.TestCase):
 
         threw = False
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
+        with patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
             mock_frappe.throw = MagicMock(side_effect=Exception("ValidationError"))
             mock_frappe._ = lambda x: x
 
@@ -131,7 +131,7 @@ class TestWarehouseUniquenessValidation(unittest.TestCase):
         """
         returned_wh, default_wh, wornout_wh = triple
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
             PPETrackerSettings,
         )
 
@@ -144,7 +144,7 @@ class TestWarehouseUniquenessValidation(unittest.TestCase):
 
         threw = False
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
+        with patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
             mock_frappe.throw = MagicMock(side_effect=Exception("ValidationError"))
             mock_frappe._ = lambda x: x
 
@@ -185,7 +185,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         wh_name = scenario["warehouse_name"]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
             PPETrackerSettings,
         )
 
@@ -198,7 +198,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         threw = False
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
+        with patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
             mock_frappe.throw = MagicMock(side_effect=Exception("ValidationError"))
             mock_frappe._ = lambda x: x
             # Warehouse does not exist — get_value returns None
@@ -228,7 +228,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         wh_name = scenario["warehouse_name"]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
             PPETrackerSettings,
         )
 
@@ -240,7 +240,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         threw = False
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
+        with patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
             mock_frappe.throw = MagicMock(side_effect=Exception("ValidationError"))
             mock_frappe._ = lambda x: x
             # Warehouse exists but is disabled
@@ -270,7 +270,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         wh_name = scenario["warehouse_name"]
 
-        from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
+        from ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings import (
             PPETrackerSettings,
         )
 
@@ -282,7 +282,7 @@ class TestWarehouseExistenceValidation(unittest.TestCase):
 
         threw = False
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
+        with patch("ppe_tracker.ppe_tracker.doctype.ppe_tracker_settings.ppe_tracker_settings.frappe") as mock_frappe:
             mock_frappe.throw = MagicMock(side_effect=Exception("ValidationError"))
             mock_frappe._ = lambda x: x
             # Warehouse exists and is active (disabled=0)

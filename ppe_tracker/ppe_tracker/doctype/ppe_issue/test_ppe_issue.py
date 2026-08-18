@@ -79,7 +79,7 @@ class TestPPEIssue(unittest.TestCase):
 		not link to a PPE Request with status 'Approved', THE System SHALL
 		raise a validation error and prevent submission.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
 		doc = _make_ppe_issue(ppe_request="REQ-NOT-APPROVED")
 
@@ -97,7 +97,7 @@ class TestPPEIssue(unittest.TestCase):
 		an Inactive PPE Item, THEN THE System SHALL raise a validation error
 		and prevent submission.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
 		doc = _make_ppe_issue(ppe_item="PPE-INACTIVE-ITEM")
 
@@ -129,7 +129,7 @@ class TestPPEIssue(unittest.TestCase):
 		PPE Item Lifespan child table, and use that row's lifespan to calculate
 		the expiry date as issue_date plus that lifespan in months.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
 
 		# Employee has position_type = "Heavy Duty"
 		employee_doc = _make_employee_doc(position_type="Heavy Duty")
@@ -154,7 +154,7 @@ class TestPPEIssue(unittest.TestCase):
 		in the PPE Item Lifespan child table, THEN THE System SHALL fall back
 		to the PPE Item default lifespan when calculating the expiry date.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import resolve_lifespan
 
 		# Employee has position_type = "Standard"
 		employee_doc = _make_employee_doc(position_type="Standard")
@@ -177,7 +177,7 @@ class TestPPEIssue(unittest.TestCase):
 		Active PPE Issue for the same Employee and PPE Item, THE System SHALL
 		transition the original PPE Issue status to 'Replaced'.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
 		doc = _make_ppe_issue(
 			employee="EMP-001",
@@ -215,7 +215,7 @@ class TestPPEIssue(unittest.TestCase):
 		PPE Request, THE System SHALL transition the PPE Request status
 		from 'Approved' to 'Issued'.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
+		from ppe_tracker.ppe_tracker.doctype.ppe_issue.ppe_issue import PPEIssue
 
 		doc = _make_ppe_issue(ppe_request="REQ-APPROVED-001")
 

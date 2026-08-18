@@ -41,7 +41,7 @@ class TestPPERequest(unittest.TestCase):
 		Requirement 3.2: When a PPE Request is submitted, the system shall
 		set its status to 'Submitted'.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+		from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
 		doc = _make_ppe_request(status="Draft")
 
@@ -58,7 +58,7 @@ class TestPPERequest(unittest.TestCase):
 		system shall require a rejection reason to be recorded. Rejecting
 		without a reason raises a validation error.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+		from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
 		doc = _make_ppe_request(status="Rejected", rejection_reason="")
 
@@ -74,7 +74,7 @@ class TestPPERequest(unittest.TestCase):
 		Requirement 3.5: When a rejection reason is provided, the rejection
 		proceeds without error.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+		from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
 		doc = _make_ppe_request(status="Rejected", rejection_reason="Not available in stock")
 
@@ -91,7 +91,7 @@ class TestPPERequest(unittest.TestCase):
 		the system shall set its status to 'Approved'. The via_api flag
 		bypasses the status transition guard.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
+		from ppe_tracker.ppe_tracker.doctype.ppe_request.ppe_request import PPERequest
 
 		doc = _make_ppe_request(status="Approved", via_api=True)
 

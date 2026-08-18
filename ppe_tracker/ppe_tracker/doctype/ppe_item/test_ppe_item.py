@@ -49,7 +49,7 @@ class TestPPEItem(unittest.TestCase):
 		Requirement 1.2: The linked Item must belong to item group 'PPE';
 		if not, the system raises a validation error and prevents saving.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+		from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
 		doc = _make_ppe_item(item_code="ITEM-GENERAL-001", default_lifespan=6)
 
@@ -66,7 +66,7 @@ class TestPPEItem(unittest.TestCase):
 		Requirement 1.5: A PPE Item with default lifespan less than 1
 		must raise a validation error and prevent saving.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+		from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
 		doc = _make_ppe_item(default_lifespan=0)
 
@@ -81,7 +81,7 @@ class TestPPEItem(unittest.TestCase):
 		Requirement 1.4: No two rows in the PPE Item Lifespan child table
 		can share the same Position Type value.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+		from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
 		row1 = _make_lifespan_row(position_type="Heavy Duty", lifespan=3, idx=1)
 		row2 = _make_lifespan_row(position_type="Heavy Duty", lifespan=6, idx=2)
@@ -99,7 +99,7 @@ class TestPPEItem(unittest.TestCase):
 		valid default_lifespan (>= 1), and unique position types in the
 		lifespan table should pass validate() without raising any error.
 		"""
-		from ppe_tracker.ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
+		from ppe_tracker.ppe_tracker.doctype.ppe_item.ppe_item import PPEItem
 
 		row1 = _make_lifespan_row(position_type="Heavy Duty", lifespan=6, idx=1)
 		row2 = _make_lifespan_row(position_type="Standard", lifespan=12, idx=2)

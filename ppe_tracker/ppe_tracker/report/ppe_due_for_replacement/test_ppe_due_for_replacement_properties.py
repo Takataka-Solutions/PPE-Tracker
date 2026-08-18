@@ -128,7 +128,7 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 23: Due for Replacement Report Respects Configurable Window
         **Validates: Requirements 14.1, 14.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
 
         all_issues, reference_today, days_window = dataset
 
@@ -151,10 +151,10 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
         if days_window is not None:
             filters["days_window"] = days_window
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", return_value=str(threshold)), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
+        with patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", return_value=str(threshold)), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
 
             mock_frappe.get_all.return_value = mock_get_all_return
             mock_frappe.db.get_value.return_value = _dict(department="Engineering", designation="Engineer")
@@ -192,7 +192,7 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 23: Due for Replacement Report Respects Configurable Window
         **Validates: Requirements 14.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
 
         all_issues, reference_today, _ = dataset
 
@@ -217,10 +217,10 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
             add_days_called_with.append((current_date, days))
             return str(threshold)
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", side_effect=mock_add_days_fn), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
+        with patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", side_effect=mock_add_days_fn), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
 
             mock_frappe.get_all.return_value = mock_get_all_return
             mock_frappe.db.get_value.return_value = _dict(department="Engineering", designation="Engineer")
@@ -246,7 +246,7 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
         Feature: tts-ppe-tracker, Property 23: Due for Replacement Report Respects Configurable Window
         **Validates: Requirements 14.1, 14.2**
         """
-        from ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
+        from ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement import get_data
 
         all_issues, reference_today, days_window = dataset
 
@@ -275,10 +275,10 @@ class TestDueForReplacementReportRespectsConfigurableWindow(unittest.TestCase):
         if days_window is not None:
             filters["days_window"] = days_window
 
-        with patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", return_value=str(threshold)), \
-             patch("ppe_tracker.ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
+        with patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.frappe") as mock_frappe, \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.today", return_value=str(reference_today)), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.add_days", return_value=str(threshold)), \
+             patch("ppe_tracker.ppe_tracker.report.ppe_due_for_replacement.ppe_due_for_replacement.date_diff") as mock_date_diff:
 
             mock_frappe.get_all.return_value = mock_get_all_return
             mock_frappe.db.get_value.return_value = _dict(department="Engineering", designation="Engineer")
