@@ -2,6 +2,7 @@
  {
   "doctype": "Workflow",
   "name": "PPE Request Approval",
+  "workflow_name": "PPE Request Approval",
   "document_type": "PPE Request",
   "is_active": 1,
   "workflow_state_field": "status",
