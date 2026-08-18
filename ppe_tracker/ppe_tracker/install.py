@@ -8,11 +8,51 @@ that cannot be modified via fixture JSON files directly.
 import frappe
 from frappe.permissions import add_permission, update_permission_property
 
+# Roles this app owns. Seeded here rather than shipped as a fixture: Role is a
+# global DocType, and an unfiltered Role fixture on a shared site captures every
+# role present, including takataka_solutions' own. See BLOCK-002.
+#
+# desk_access mirrors the previous fixtures/role.json exactly, so behaviour is
+# unchanged. Only MRF User set it explicitly there; the other two are left to
+# Frappe's default. Confirm during UAT that Safety Officer has the desk access it
+# needs to action the PPE Request Approval workflow.
+PPE_ROLES = (
+    {"role_name": "Safety Officer", "is_custom": 1},
+    {"role_name": "Storekeeper", "is_custom": 1},
+    {"role_name": "MRF User", "is_custom": 1, "desk_access": 1},
+)
+
+
+def after_install():
+    """Run once on bench install-app.
+
+    Wired so a fresh install does not depend on a later `bench migrate` to
+    become usable. Everything called here is idempotent, so the overlap with
+    after_migrate is harmless.
+    """
+    after_migrate()
+
 
 def after_migrate():
-    """Run after every bench migrate to ensure custom role permissions are in place."""
+    """Run after every bench migrate to ensure roles and permissions are in place."""
+    ensure_roles()
     setup_mrf_user_permissions()
     frappe.db.commit()
+
+
+def ensure_roles():
+    """Create this app's roles if absent. Idempotent; never modifies existing roles.
+
+    Existing roles are left untouched on purpose. On a shared site a role may
+    already exist and be in use by another app, and silently rewriting its
+    properties would be a cross-app side effect.
+    """
+    for role in PPE_ROLES:
+        if frappe.db.exists("Role", role["role_name"]):
+            continue
+        doc = frappe.new_doc("Role")
+        doc.update(role)
+        doc.insert(ignore_permissions=True)
 
 
 def setup_mrf_user_permissions():

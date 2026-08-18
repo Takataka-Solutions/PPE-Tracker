@@ -20,13 +20,48 @@ app_license = "MIT"
 # ------------
 
 # before_install = "ppe_tracker.ppe_tracker.install.before_install"
-# after_install = "ppe_tracker.ppe_tracker.install.after_install"
+after_install = "ppe_tracker.ppe_tracker.install.after_install"
 after_migrate = ["ppe_tracker.ppe_tracker.install.after_migrate"]
 
 # Fixtures
 # --------
+# Every entry MUST carry an explicit filter. A bare DocType name means "every
+# record of this type on the site", and this app shares a site with
+# takataka_solutions, which also exports Custom Field, Workflow and Print Format
+# unfiltered. Without filters, `bench export-fixtures` for either app captures
+# the other's records and `bench migrate` sync order decides which survives.
+# See docs/02_Blocker_Register.md BLOCK-002.
+#
+# Deliberately NOT fixtures:
+#   Role         - seeded idempotently in install.py. Roles are global, and an
+#                  unfiltered Role export drags in every role on the site.
+#   Print Format - "Combined PPE Issue Form" is a standard (file-based) print
+#                  format living in ppe_tracker/print_format/, so it syncs like
+#                  a DocType. A fixture entry would be redundant.
 
-fixtures = ["Role", "Custom Field", "Workflow", "Print Format"]
+fixtures = [
+    {
+        "dt": "Custom Field",
+        "filters": [
+            [
+                "name",
+                "in",
+                [
+                    # Custom Field autonames as "{dt}-{fieldname}"
+                    "Employee-custom_position_type",
+                    "Stock Entry-custom_ppe_issue",
+                    "Stock Entry-custom_ppe_return",
+                    "Additional Salary-custom_ppe_loss",
+                ],
+            ]
+        ],
+    },
+    {
+        "dt": "Workflow",
+        # Required as a fixture: there is no Workflow JSON in the module tree.
+        "filters": [["name", "in", ["PPE Request Approval"]]],
+    },
+]
 
 # Scheduled Tasks
 # ---------------
